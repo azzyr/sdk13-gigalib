@@ -128,7 +128,7 @@ sentry_value_t SENTRY_CRASHFUNC(const sentry_ucontext_t* uctx, sentry_value_t ev
         sentry_value_decref(event);
         return sentry_value_new_null();
     }
-
+/*
     const char* const spew = Engine_GetSpew();
 
     std::ofstream confile;
@@ -136,7 +136,7 @@ sentry_value_t SENTRY_CRASHFUNC(const sentry_ucontext_t* uctx, sentry_value_t ev
     confile << spew;
     confile.flush();
     confile.close();
-
+*/
     sentry_flush(1000);
     // sentry_close();
     // abort();
@@ -232,7 +232,7 @@ void CSentry::SentryInit()
 #endif
 #endif
 
-    sentry_reinstall_backend();
+//    sentry_reinstall_backend();
     int sentryinit = sentry_init(options);
     if (sentryinit != 0)
     {
@@ -240,7 +240,7 @@ void CSentry::SentryInit()
         CSentry::didinit = false;
         return;
     }
-    sentry_reinstall_backend();
+//    sentry_reinstall_backend();
 
     CSentry::didinit = true;
 
@@ -323,7 +323,7 @@ void CSentry::SentryInit()
         cl_send_error_reports.SetValue(-1);
     }
 #endif
-    sentry_reinstall_backend();
+//    sentry_reinstall_backend();
 }
 
 void SetSteamID()
